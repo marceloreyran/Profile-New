@@ -38,7 +38,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand */}
           <div>
-            <h3 className="text-2xl font-bold gradient-text mb-4">Marcelo Rey</h3>
+            <div className="flex items-center mb-4">
+              <img 
+                src="/assets/Montdev_1754062174083.PNG" 
+                alt="MontDev Logo" 
+                className="h-8 w-8 object-contain mr-3"
+              />
+              <h3 className="text-2xl font-bold gradient-text">MONTDEV</h3>
+            </div>
             <p className="text-slate-300 mb-4">
               Frontend Developer passionate about creating exceptional digital experiences 
               through modern web technologies and innovative solutions.

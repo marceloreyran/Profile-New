@@ -58,7 +58,11 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg"></div>
+            <img 
+              src="/assets/Montdev_1754062174083.PNG" 
+              alt="MontDev Logo" 
+              className="h-10 w-10 object-contain"
+            />
           </div>
           
           {/* Desktop Navigation */}
