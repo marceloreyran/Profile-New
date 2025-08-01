@@ -3,14 +3,14 @@ import type { Education, WorkExperience } from "@shared/schema";
 const education: Education[] = [
   {
     degree: "Master's Degree in Software Engineering and Computer Systems",
-    institution: "Universidad Internacional de La Rioja en México",
+    institution: "UNIR",
     period: "",
     description:
       "Logical reasoning skills, problem solving, decision making, observation, analysis and synthesis skills and interest in research and innovation, as well as knowledge of and interest in exact sciences of software and computer science.",
   },
   {
     degree: "Software Technology Engineer",
-    institution: "Universidad del Valle de México",
+    institution: "UVM",
     period: "",
     description:
       "Apply autonomous learning strategies at different levels and fields of knowledge that allow you to make timely and relevant decisions in the personal, academic and professional spheres. Use logical, formal, mathematical, iconic, verbal and non-verbal languages according to their stage of life, to understand, interpret and express ideas, feelings, theories and currents of thought with an ecumenical approach.",
