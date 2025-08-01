@@ -1,7 +1,7 @@
 import type { PersonalInfo } from "@shared/schema";
 
 const personalInfo: PersonalInfo = {
-  name: "Marcelo Reyna",
+  name: "Marcelo Reyna Rangel",
   title: "Frontend Developer",
   phone: "81-26-55-00-31",
   email: "marcelo.reyran@gmail.com",

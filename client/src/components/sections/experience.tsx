@@ -115,7 +115,7 @@ export default function Experience() {
           <div>
             <h3 className="text-2xl font-bold mb-8 text-center">
               <i className="fas fa-briefcase text-blue-600 mr-2"></i>
-              Work Experience
+              IT
             </h3>
 
             <div className="relative">
