@@ -58,7 +58,7 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <span className="text-xl font-semibold text-slate-700">Profile</span>
+            <span className="text-xl font-semibold text-blue-400">Profile</span>
           </div>
           
           {/* Desktop Navigation */}
