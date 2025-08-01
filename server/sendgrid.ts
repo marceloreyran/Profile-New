@@ -22,10 +22,31 @@ export async function sendEmail(params: EmailParams): Promise<boolean> {
   try {
     await mailService.send({
       to: params.to,
-      from: params.from,
+      from: {
+        email: params.from,
+        name: "Montdev Technology - Portfolio Contact"
+      },
       subject: params.subject,
       text: params.text || '',
       html: params.html || '',
+      // Anti-spam headers
+      headers: {
+        'X-Priority': '3',
+        'X-MSMail-Priority': 'Normal',
+        'X-Mailer': 'Montdev Portfolio System',
+        'X-MimeOLE': 'Produced By Montdev Technology'
+      },
+      // Categories for SendGrid tracking
+      categories: ['portfolio-contact', 'business-inquiry'],
+      // Custom tracking settings
+      trackingSettings: {
+        clickTracking: {
+          enable: false
+        },
+        openTracking: {
+          enable: false
+        }
+      }
     });
     return true;
   } catch (error: any) {
