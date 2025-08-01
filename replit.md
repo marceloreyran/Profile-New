@@ -11,7 +11,7 @@ The portfolio includes sections for personal information, technical and professi
 - Updated profile photo to professional urban background image
 - Removed date periods from experience and education sections for cleaner presentation
 - Implemented fully functional email system using SendGrid
-- Contact form messages automatically sent to montdevtechnology@gmail.com from marcelo.reyran@gmail.com
+- Contact form messages automatically sent to montdevtechnology@gmail.com from montdevtechnology@gmail.com
 - Enhanced email notifications with professional HTML formatting:
   - Modern responsive design with portfolio branding
   - Timestamp and organized field layout
