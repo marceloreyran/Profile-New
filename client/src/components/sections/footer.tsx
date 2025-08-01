@@ -2,21 +2,21 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
-    { href: '#home', label: 'Home' },
-    { href: '#about', label: 'About' },
-    { href: '#skills', label: 'Skills' },
-    { href: '#experience', label: 'Experience' },
-    { href: '#portfolio', label: 'Portfolio' },
-    { href: '#contact', label: 'Contact' },
+    { href: "#home", label: "Home" },
+    { href: "#about", label: "About" },
+    { href: "#skills", label: "Skills" },
+    { href: "#experience", label: "Experience" },
+    { href: "#portfolio", label: "Portfolio" },
+    { href: "#contact", label: "Contact" },
   ];
 
   const services = [
-    'Web Development',
-    'Frontend Development',
-    'UI/UX Design',
-    'Mobile App Development',
-    'Technical Consulting',
-    'Code Review & Optimization',
+    "Web Development",
+    "Frontend Development",
+    "UI/UX Design",
+    "Mobile App Development",
+    "Technical Consulting",
+    "Code Review & Optimization",
   ];
 
   const scrollToSection = (href: string) => {
@@ -27,7 +27,7 @@ export default function Footer() {
       const targetPosition = element.offsetTop - headerHeight;
       window.scrollTo({
         top: targetPosition,
-        behavior: 'smooth'
+        behavior: "smooth",
       });
     }
   };
@@ -38,27 +38,42 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand */}
           <div>
-            <h3 className="text-2xl font-bold gradient-text mb-4">Marcelo Rey</h3>
+            <h3 className="text-2xl font-bold gradient-text mb-4">
+              Marcelo Reyna Rangel
+            </h3>
             <p className="text-slate-300 mb-4">
-              Frontend Developer passionate about creating exceptional digital experiences 
-              through modern web technologies and innovative solutions.
+              Frontend Developer passionate about creating exceptional digital
+              experiences through modern web technologies and innovative
+              solutions.
             </p>
             <div className="flex space-x-4">
-              <a href="mailto:marcelo.reyran@gmail.com" className="text-slate-300 hover:text-white transition-colors duration-300">
+              <a
+                href="mailto:marcelo.reyran@gmail.com"
+                className="text-slate-300 hover:text-white transition-colors duration-300"
+              >
                 <i className="fas fa-envelope text-xl"></i>
               </a>
-              <a href="#" className="text-slate-300 hover:text-white transition-colors duration-300">
+              <a
+                href="#"
+                className="text-slate-300 hover:text-white transition-colors duration-300"
+              >
                 <i className="fab fa-linkedin text-xl"></i>
               </a>
-              <a href="#" className="text-slate-300 hover:text-white transition-colors duration-300">
+              <a
+                href="#"
+                className="text-slate-300 hover:text-white transition-colors duration-300"
+              >
                 <i className="fab fa-github text-xl"></i>
               </a>
-              <a href="#" className="text-slate-300 hover:text-white transition-colors duration-300">
+              <a
+                href="#"
+                className="text-slate-300 hover:text-white transition-colors duration-300"
+              >
                 <i className="fab fa-twitter text-xl"></i>
               </a>
             </div>
           </div>
-          
+
           {/* Quick Links */}
           <div>
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
@@ -75,7 +90,7 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-          
+
           {/* Services */}
           <div>
             <h4 className="text-lg font-semibold mb-4">Services</h4>
@@ -86,11 +101,11 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        
+
         <div className="border-t border-slate-700 mt-8 pt-8 text-center">
           <p className="text-slate-300">
-            &copy; {currentYear} Marcelo Rey. All rights reserved. 
-            Made with <span className="text-red-500">❤</span> in Monterrey, México
+            &copy; {currentYear} Marcelo Reyna Rangel. All rights reserved. Made
+            with <span className="text-red-500">❤</span> in Monterrey, México
           </p>
         </div>
       </div>
