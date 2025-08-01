@@ -85,74 +85,97 @@ export default function Portfolio() {
     : projects.filter(project => project.category === activeFilter);
 
   return (
-    <section id="portfolio" className="py-20 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">Portfolio</h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full"></div>
-          <p className="text-xl text-slate-600 mt-6 max-w-2xl mx-auto">
+    <section id="portfolio" className="section-padding bg-gradient-to-br from-slate-50 via-white to-purple-50 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-40 left-40 w-80 h-80 bg-purple-400 rounded-full filter blur-3xl animate-float"></div>
+        <div className="absolute bottom-40 right-40 w-80 h-80 bg-blue-400 rounded-full filter blur-3xl animate-float" style={{animationDelay: '2s'}}></div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-20">
+          <div className="inline-block mb-4">
+            <span className="px-6 py-2 bg-gradient-to-r from-purple-500 to-blue-500 text-white text-sm font-semibold rounded-full shadow-lg">
+              My Work
+            </span>
+          </div>
+          <h2 className="text-5xl md:text-6xl font-black mb-6 gradient-text">Portfolio</h2>
+          <div className="w-32 h-2 bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-500 mx-auto rounded-full shadow-lg"></div>
+          <p className="text-xl text-slate-700 mt-8 max-w-3xl mx-auto font-light leading-relaxed">
             Showcasing my latest projects and creative solutions
           </p>
         </div>
         
-        {/* Project Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {filters.map((filter) => (
+        {/* Enhanced Project Filter Buttons */}
+        <div className="flex flex-wrap justify-center gap-6 mb-16">
+          {filters.map((filter, index) => (
             <button
               key={filter.id}
               onClick={() => setActiveFilter(filter.id)}
-              className={`px-6 py-3 rounded-full font-medium transition-colors duration-300 ${
+              className={`group px-8 py-4 rounded-2xl font-bold transition-all duration-500 transform hover:scale-110 shadow-lg hover:shadow-xl ${
                 activeFilter === filter.id
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-white text-slate-600 hover:bg-slate-100'
+                  ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-purple-500/25'
+                  : 'bg-white/80 backdrop-blur-sm text-slate-700 hover:bg-gradient-to-r hover:from-purple-500 hover:to-blue-500 hover:text-white border border-white/50'
               }`}
+              style={{animationDelay: `${index * 100}ms`}}
             >
-              {filter.label}
+              <span className="relative z-10">{filter.label}</span>
+              {activeFilter === filter.id && (
+                <div className="absolute inset-0 bg-white/20 rounded-2xl animate-pulse"></div>
+              )}
             </button>
           ))}
         </div>
         
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project) => (
-            <div key={project.id} className="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
-              <div className="relative group">
+        {/* Enhanced Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {filteredProjects.map((project, index) => (
+            <div 
+              key={project.id} 
+              className="group relative bg-white/90 backdrop-blur-xl rounded-3xl shadow-2xl hover:shadow-purple-500/25 transition-all duration-500 overflow-hidden card-hover border border-white/50 animate-fade-in-up"
+              style={{animationDelay: `${index * 150}ms`}}
+            >
+              <div className="relative overflow-hidden rounded-t-3xl">
                 <img 
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" 
+                  className="w-full h-72 object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-110" 
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                  <div className="p-6 text-white">
-                    <div className="flex space-x-4">
-                      {project.liveUrl && (
-                        <a 
-                          href={project.liveUrl}
-                          className="p-2 bg-white/20 rounded-full hover:bg-white/30 transition-colors duration-300"
-                        >
-                          <i className="fas fa-external-link-alt"></i>
-                        </a>
-                      )}
-                      {project.githubUrl && (
-                        <a 
-                          href={project.githubUrl}
-                          className="p-2 bg-white/20 rounded-full hover:bg-white/30 transition-colors duration-300"
-                        >
-                          <i className="fab fa-github"></i>
-                        </a>
-                      )}
-                    </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
+                  <div className="flex space-x-4 transform translate-y-8 group-hover:translate-y-0 transition-transform duration-500">
+                    {project.liveUrl && (
+                      <a 
+                        href={project.liveUrl}
+                        className="group/btn p-4 bg-white/20 backdrop-blur-sm rounded-2xl hover:bg-white/30 transition-all duration-300 transform hover:scale-110 shadow-lg"
+                      >
+                        <i className="fas fa-external-link-alt text-white text-lg group-hover/btn:animate-pulse"></i>
+                      </a>
+                    )}
+                    {project.githubUrl && (
+                      <a 
+                        href={project.githubUrl}
+                        className="group/btn p-4 bg-white/20 backdrop-blur-sm rounded-2xl hover:bg-white/30 transition-all duration-300 transform hover:scale-110 shadow-lg"
+                      >
+                        <i className="fab fa-github text-white text-lg group-hover/btn:animate-pulse"></i>
+                      </a>
+                    )}
                   </div>
                 </div>
+                <div className="absolute top-4 right-4">
+                  <span className={`px-3 py-1 text-xs font-semibold rounded-full backdrop-blur-sm ${categoryColors[project.category]} border border-white/30`}>
+                    {project.category.toUpperCase()}
+                  </span>
+                </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                <p className="text-slate-600 mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {project.technologies.map((tech) => (
+              <div className="p-8">
+                <h3 className="text-2xl font-bold mb-3 gradient-text group-hover:scale-105 transition-transform duration-300">{project.title}</h3>
+                <p className="text-slate-600 mb-6 leading-relaxed">{project.description}</p>
+                <div className="flex flex-wrap gap-3">
+                  {project.technologies.map((tech, techIndex) => (
                     <span 
                       key={tech}
-                      className={`px-3 py-1 text-sm rounded-full ${categoryColors[project.category]}`}
+                      className="px-4 py-2 text-sm font-semibold bg-gradient-to-r from-slate-100 to-slate-200 text-slate-700 rounded-2xl hover:from-purple-100 hover:to-blue-100 hover:text-purple-700 transition-all duration-300 transform hover:scale-105 shadow-sm"
+                      style={{animationDelay: `${techIndex * 50}ms`}}
                     >
                       {tech}
                     </span>

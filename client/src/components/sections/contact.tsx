@@ -60,19 +60,31 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">Get In Touch</h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full"></div>
-          <p className="text-xl text-slate-600 mt-6 max-w-2xl mx-auto">
-            Let's discuss your next project and bring your ideas to life
+    <section id="contact" className="section-padding bg-gradient-to-br from-white via-blue-50 to-cyan-50 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-20 left-20 w-96 h-96 bg-blue-400 rounded-full filter blur-3xl animate-float"></div>
+        <div className="absolute bottom-20 right-20 w-96 h-96 bg-cyan-400 rounded-full filter blur-3xl animate-float" style={{animationDelay: '3s'}}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-purple-400 rounded-full filter blur-3xl animate-float" style={{animationDelay: '6s'}}></div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-20">
+          <div className="inline-block mb-4">
+            <span className="px-6 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-sm font-semibold rounded-full shadow-lg">
+              Get In Touch
+            </span>
+          </div>
+          <h2 className="text-5xl md:text-6xl font-black mb-6 gradient-text">Contact Me</h2>
+          <div className="w-32 h-2 bg-gradient-to-r from-blue-500 via-cyan-500 to-purple-500 mx-auto rounded-full shadow-lg"></div>
+          <p className="text-xl text-slate-700 mt-8 max-w-3xl mx-auto font-light leading-relaxed">
+            Ready to bring your ideas to life? Let's start the conversation and create something amazing together.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Information */}
-          <div className="space-y-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          {/* Enhanced Contact Information */}
+          <div className="space-y-10">
             <div>
               <h3 className="text-2xl font-bold mb-6">Let's Connect</h3>
               <p className="text-slate-600 text-lg mb-8">
@@ -83,33 +95,33 @@ export default function Contact() {
             
             {/* Contact Info Cards */}
             <div className="space-y-4">
-              <div className="flex items-center p-4 bg-white rounded-lg shadow-sm">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
-                  <i className="fas fa-phone text-blue-600"></i>
+              <div className="group flex items-center p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 border border-white/50">
+                <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-2xl flex items-center justify-center mr-6 shadow-lg group-hover:animate-pulse">
+                  <i className="fas fa-phone text-white text-xl"></i>
                 </div>
                 <div>
-                  <h4 className="font-semibold">Phone</h4>
-                  <p className="text-slate-600">{contactInfo.phone}</p>
+                  <h4 className="font-bold text-slate-800 text-lg">Phone</h4>
+                  <p className="text-slate-600 text-lg">{contactInfo.phone}</p>
                 </div>
               </div>
               
-              <div className="flex items-center p-4 bg-white rounded-lg shadow-sm">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
-                  <i className="fas fa-envelope text-blue-600"></i>
+              <div className="group flex items-center p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 border border-white/50">
+                <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-2xl flex items-center justify-center mr-6 shadow-lg group-hover:animate-pulse">
+                  <i className="fas fa-envelope text-white text-xl"></i>
                 </div>
                 <div>
-                  <h4 className="font-semibold">Email</h4>
-                  <p className="text-slate-600">{contactInfo.email}</p>
+                  <h4 className="font-bold text-slate-800 text-lg">Email</h4>
+                  <p className="text-slate-600 text-lg">{contactInfo.email}</p>
                 </div>
               </div>
               
-              <div className="flex items-center p-4 bg-white rounded-lg shadow-sm">
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
-                  <i className="fas fa-map-marker-alt text-blue-600"></i>
+              <div className="group flex items-center p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 border border-white/50">
+                <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-2xl flex items-center justify-center mr-6 shadow-lg group-hover:animate-pulse">
+                  <i className="fas fa-map-marker-alt text-white text-xl"></i>
                 </div>
                 <div>
-                  <h4 className="font-semibold">Location</h4>
-                  <p className="text-slate-600">{contactInfo.location}</p>
+                  <h4 className="font-bold text-slate-800 text-lg">Location</h4>
+                  <p className="text-slate-600 text-lg">{contactInfo.location}</p>
                 </div>
               </div>
             </div>
@@ -134,8 +146,10 @@ export default function Contact() {
             </div>
           </div>
           
-          {/* Contact Form */}
-          <div className="bg-white p-8 rounded-2xl shadow-lg">
+          {/* Enhanced Contact Form */}
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-3xl blur-xl"></div>
+            <div className="relative bg-white/90 backdrop-blur-xl p-10 rounded-3xl shadow-2xl border border-white/50">
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
@@ -210,6 +224,7 @@ export default function Contact() {
                 )}
               </Button>
             </form>
+            </div>
           </div>
         </div>
       </div>

@@ -1,26 +1,36 @@
 export default function Hero() {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background */}
+      {/* Enhanced Background */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&h=1080" 
-          alt="Professional developer workspace" 
-          className="w-full h-full object-cover opacity-10" 
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-cyan-900/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-cyan-50"></div>
+        <div className="absolute inset-0">
+          <div className="absolute top-10 left-10 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float"></div>
+          <div className="absolute top-20 right-10 w-72 h-72 bg-cyan-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style={{animationDelay: '2s'}}></div>
+          <div className="absolute bottom-10 left-1/2 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float" style={{animationDelay: '4s'}}></div>
+        </div>
       </div>
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="animate-fade-in-up">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            Hi, I'm <span className="gradient-text">Marcelo</span>
+          <div className="mb-8">
+            <div className="inline-block p-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full mb-6 animate-pulse-soft">
+              <div className="bg-white px-4 py-2 rounded-full">
+                <span className="text-sm font-medium bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                  Available for Opportunities
+                </span>
+              </div>
+            </div>
+          </div>
+          <h1 className="text-6xl md:text-8xl font-black mb-8 leading-tight">
+            Hi, I'm <span className="gradient-text animate-pulse-soft">Marcelo</span>
           </h1>
-          <p className="text-xl md:text-2xl text-slate-600 mb-8 max-w-3xl mx-auto font-light">
+          <p className="text-xl md:text-3xl text-slate-700 mb-12 max-w-4xl mx-auto font-light leading-relaxed">
             Frontend Developer specializing in modern web technologies. 
-            I create engaging, responsive experiences that bring ideas to life.
+            <br className="hidden md:block" />
+            <span className="text-blue-600 font-medium">Creating engaging, responsive experiences</span> that bring ideas to life.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <button
               onClick={() => {
                 const element = document.getElementById('portfolio');
@@ -28,10 +38,11 @@ export default function Hero() {
                   element.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className="inline-flex items-center px-8 py-4 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              className="group inline-flex items-center px-10 py-5 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold rounded-2xl hover:from-blue-700 hover:to-cyan-700 transition-all duration-500 transform hover:scale-110 shadow-2xl hover:shadow-blue-500/25 relative overflow-hidden"
             >
-              <i className="fas fa-eye mr-2"></i>
-              View My Work
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-400 opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
+              <i className="fas fa-eye mr-3 text-lg group-hover:animate-pulse"></i>
+              <span className="relative z-10">View My Work</span>
             </button>
             <button
               onClick={() => {
@@ -40,39 +51,40 @@ export default function Hero() {
                   element.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className="inline-flex items-center px-8 py-4 border-2 border-blue-600 text-blue-600 font-semibold rounded-xl hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="group inline-flex items-center px-10 py-5 border-3 border-blue-600 text-blue-600 font-bold rounded-2xl hover:bg-blue-600 hover:text-white transition-all duration-500 shadow-2xl hover:shadow-blue-500/25 backdrop-blur-sm bg-white/10 relative overflow-hidden"
             >
-              <i className="fas fa-envelope mr-2"></i>
-              Get In Touch
+              <div className="absolute inset-0 bg-blue-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+              <i className="fas fa-envelope mr-3 text-lg relative z-10 group-hover:animate-pulse"></i>
+              <span className="relative z-10">Get In Touch</span>
             </button>
           </div>
         </div>
         
-        {/* Social Links */}
-        <div className="mt-12 flex justify-center space-x-6">
+        {/* Enhanced Social Links */}
+        <div className="mt-16 flex justify-center space-x-8">
           <a 
             href="mailto:marcelo.reyran@gmail.com" 
-            className="text-slate-600 hover:text-blue-600 transition-colors duration-300"
+            className="group p-4 bg-white/20 backdrop-blur-sm border border-white/30 rounded-2xl text-slate-700 hover:text-white hover:bg-gradient-to-r hover:from-blue-500 hover:to-cyan-500 transition-all duration-500 transform hover:scale-110 shadow-lg hover:shadow-xl"
           >
-            <i className="fas fa-envelope text-2xl"></i>
+            <i className="fas fa-envelope text-2xl group-hover:animate-pulse"></i>
           </a>
           <a 
             href="#" 
-            className="text-slate-600 hover:text-blue-600 transition-colors duration-300"
+            className="group p-4 bg-white/20 backdrop-blur-sm border border-white/30 rounded-2xl text-slate-700 hover:text-white hover:bg-gradient-to-r hover:from-blue-500 hover:to-cyan-500 transition-all duration-500 transform hover:scale-110 shadow-lg hover:shadow-xl"
           >
-            <i className="fab fa-linkedin text-2xl"></i>
+            <i className="fab fa-linkedin text-2xl group-hover:animate-pulse"></i>
           </a>
           <a 
             href="#" 
-            className="text-slate-600 hover:text-blue-600 transition-colors duration-300"
+            className="group p-4 bg-white/20 backdrop-blur-sm border border-white/30 rounded-2xl text-slate-700 hover:text-white hover:bg-gradient-to-r hover:from-blue-500 hover:to-cyan-500 transition-all duration-500 transform hover:scale-110 shadow-lg hover:shadow-xl"
           >
-            <i className="fab fa-github text-2xl"></i>
+            <i className="fab fa-github text-2xl group-hover:animate-pulse"></i>
           </a>
           <a 
             href="#" 
-            className="text-slate-600 hover:text-blue-600 transition-colors duration-300"
+            className="group p-4 bg-white/20 backdrop-blur-sm border border-white/30 rounded-2xl text-slate-700 hover:text-white hover:bg-gradient-to-r hover:from-blue-500 hover:to-cyan-500 transition-all duration-500 transform hover:scale-110 shadow-lg hover:shadow-xl"
           >
-            <i className="fab fa-twitter text-2xl"></i>
+            <i className="fab fa-twitter text-2xl group-hover:animate-pulse"></i>
           </a>
         </div>
       </div>
