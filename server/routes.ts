@@ -14,7 +14,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Send email notification to Marcelo
       const emailSent = await sendEmail({
         to: "marcelo.reyran@gmail.com",
-        from: "noreply@portfolio.com", // You'll need to verify this domain in SendGrid
+        from: "marcelo.reyran@gmail.com", // Using your verified email as sender
         subject: `Nuevo mensaje de contacto de ${validatedData.name}`,
         html: createContactEmailHtml(validatedData.name, validatedData.email, validatedData.message),
         text: `Nuevo mensaje de: ${validatedData.name} (${validatedData.email})\n\nMensaje: ${validatedData.message}`
