@@ -15,9 +15,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const emailSent = await sendEmail({
         to: "marcelo.reyran@gmail.com",
         from: "marcelo.reyran@gmail.com", // Using your verified email as sender
-        subject: `Nuevo mensaje de contacto de ${validatedData.name}`,
-        html: createContactEmailHtml(validatedData.name, validatedData.email, validatedData.message),
-        text: `Nuevo mensaje de: ${validatedData.name} (${validatedData.email})\n\nMensaje: ${validatedData.message}`
+        subject: `💼 Nuevo contacto: ${validatedData.name} - ${validatedData.subject}`,
+        html: createContactEmailHtml(validatedData.name, validatedData.email, validatedData.subject, validatedData.message),
+        text: `NUEVO MENSAJE DE CONTACTO\n\nNombre: ${validatedData.name}\nEmail: ${validatedData.email}\nAsunto: ${validatedData.subject}\n\nMensaje:\n${validatedData.message}\n\n---\nEnviado desde tu portafolio web`
       });
       
       console.log("New contact message:", message);

@@ -12,7 +12,13 @@ The portfolio includes sections for personal information, technical and professi
 - Removed date periods from experience and education sections for cleaner presentation
 - Implemented fully functional email system using SendGrid
 - Contact form messages automatically sent to marcelo.reyran@gmail.com
-- Email notifications include professional HTML formatting with portfolio branding
+- Enhanced email notifications with professional HTML formatting:
+  - Modern responsive design with portfolio branding
+  - Timestamp and organized field layout
+  - Direct reply button and clickable email links
+  - Improved subject line format with emojis and contact details
+  - Better text formatting preserving line breaks
+- Database storage for all contact messages with API access
 
 ## User Preferences
 
