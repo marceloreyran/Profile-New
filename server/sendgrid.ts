@@ -188,7 +188,7 @@ export function createContactEmailHtml(name: string, email: string, subject: str
         </div>
         <div class="footer">
           <p>Este mensaje fue enviado desde tu portafolio web profesional</p>
-          <p>Portfolio: <strong>Marcelo Rey - Frontend Developer</strong></p>
+          <p>Portfolio: <strong>Marcelo Reyna Rangel - Frontend Developer</strong></p>
         </div>
       </div>
     </body>
@@ -251,7 +251,7 @@ export function createAutoReplyHtml(name: string): string {
           <p>Generalmente respondo en un plazo de 24 horas.</p>
         </div>
         <div class="footer">
-          <p><strong>Marcelo Rey</strong> - Frontend Developer</p>
+          <p><strong>Marcelo Reyna Rangel</strong> - Frontend Developer</p>
         </div>
       </div>
     </body>
