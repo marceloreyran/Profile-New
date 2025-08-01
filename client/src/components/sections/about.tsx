@@ -110,16 +110,7 @@ export default function About() {
               </div>
             </div>
 
-            {/* Download CV Button */}
-            <div className="mt-8">
-              <a
-                href="#"
-                className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
-              >
-                <i className="fas fa-download mr-2"></i>
-                Download CV
-              </a>
-            </div>
+
           </div>
         </div>
       </div>
