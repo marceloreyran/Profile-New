@@ -2,6 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertContactMessageSchema } from "@shared/schema";
+import { sendEmail, createContactEmailHtml } from "./sendgrid";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Contact form submission
@@ -10,18 +11,29 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const validatedData = insertContactMessageSchema.parse(req.body);
       const message = await storage.createContactMessage(validatedData);
       
-      // In a real application, you would send an email here
+      // Send email notification to Marcelo
+      const emailSent = await sendEmail({
+        to: "marcelo.reyran@gmail.com",
+        from: "noreply@portfolio.com", // You'll need to verify this domain in SendGrid
+        subject: `Nuevo mensaje de contacto de ${validatedData.name}`,
+        html: createContactEmailHtml(validatedData.name, validatedData.email, validatedData.message),
+        text: `Nuevo mensaje de: ${validatedData.name} (${validatedData.email})\n\nMensaje: ${validatedData.message}`
+      });
+      
       console.log("New contact message:", message);
+      console.log("Email sent:", emailSent);
       
       res.json({ 
         success: true, 
-        message: "Thank you for your message! I'll get back to you soon." 
+        message: emailSent 
+          ? "¡Gracias por tu mensaje! Te responderé pronto." 
+          : "Tu mensaje fue guardado. Te contactaré pronto." 
       });
     } catch (error) {
       console.error("Contact form error:", error);
       res.status(400).json({ 
         success: false, 
-        message: "Please check your form data and try again." 
+        message: "Por favor verifica los datos y intenta de nuevo." 
       });
     }
   });
