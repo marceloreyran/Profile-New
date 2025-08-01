@@ -19,14 +19,14 @@ const education: Education[] = [
 
 const workExperience: WorkExperience[] = [
   {
-    position: "IT Administrator",
+    position: "IT",
     company: "TRESANDE",
     period: "",
     description:
       "Activities carried out in position, Administrative area, Hardware and Software Support, Hardware and Software monitoring, Equipment connectivity, Databases",
   },
   {
-    position: "Administrative",
+    position: "IT",
     company: "GNSYS",
     period: "",
     description:
