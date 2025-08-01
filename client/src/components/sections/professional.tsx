@@ -95,20 +95,7 @@ export default function Professional() {
               </ul>
             </div>
 
-            {/* CV Download Section */}
-            <div className="bg-gradient-to-r from-blue-600 to-cyan-600 p-6 rounded-lg text-white text-center">
-              <h4 className="font-semibold mb-4">Download My Resume</h4>
-              <p className="text-blue-100 mb-6 text-sm">
-                Get a detailed overview of my experience, skills, and qualifications
-              </p>
-              <button
-                onClick={handleDownloadCV}
-                className="inline-flex items-center px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition-colors duration-300 shadow-lg hover:shadow-xl"
-              >
-                <i className="fas fa-download mr-2"></i>
-                Download CV (PDF)
-              </button>
-            </div>
+
           </div>
         </div>
 
