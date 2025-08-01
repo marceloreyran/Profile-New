@@ -4,7 +4,15 @@
 
 This is a modern, professional portfolio website built for Marcelo Rey, a Frontend Developer. The application showcases skills, experience, education, projects, and provides a contact form for potential clients and employers. It features a single-page application (SPA) architecture with smooth scrolling navigation, responsive design, and modern UI components.
 
-The portfolio includes sections for personal information, technical and professional skills with animated progress bars, work experience and education timeline, project showcase with filtering capabilities, client testimonials, and a functional contact form. The application is built with a full-stack architecture using React for the frontend and Express.js for the backend, with both in-memory storage and PostgreSQL database support.
+The portfolio includes sections for personal information, technical and professional skills with animated progress bars, work experience and education timeline, project showcase with filtering capabilities, client testimonials, and a fully functional contact form with email notifications. The application is built with a full-stack architecture using React for the frontend and Express.js for the backend, with both in-memory storage and PostgreSQL database support.
+
+## Recent Updates (August 2025)
+
+- Updated profile photo to professional urban background image
+- Removed date periods from experience and education sections for cleaner presentation
+- Implemented fully functional email system using SendGrid
+- Contact form messages automatically sent to marcelo.reyran@gmail.com
+- Email notifications include professional HTML formatting with portfolio branding
 
 ## User Preferences
 
