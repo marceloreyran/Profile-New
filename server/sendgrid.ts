@@ -7,6 +7,9 @@ if (!process.env.SENDGRID_API_KEY) {
 const mailService = new MailService();
 mailService.setApiKey(process.env.SENDGRID_API_KEY);
 
+// Debug: Log the API key format (first few characters only for security)
+console.log('SendGrid API Key format check:', process.env.SENDGRID_API_KEY?.substring(0, 3) + '...');
+
 interface EmailParams {
   to: string;
   from: string;
