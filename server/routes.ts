@@ -11,9 +11,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const validatedData = insertContactMessageSchema.parse(req.body);
       const message = await storage.createContactMessage(validatedData);
       
-      // Send email notification to Montdev Technology
+      // Send email notification to Marcelo
       const emailSent = await sendEmail({
-        to: "montdevtechnology@gmail.com",
+        to: "marcelo.reyran@gmail.com",
         from: "montdevtechnology@gmail.com", // Using your verified Montdev email as sender
         subject: `💼 Nuevo contacto: ${validatedData.name} - ${validatedData.subject}`,
         html: createContactEmailHtml(validatedData.name, validatedData.email, validatedData.subject, validatedData.message),
