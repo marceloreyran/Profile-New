@@ -8,7 +8,7 @@ const personalInfo: PersonalInfo = {
   location: "Monterrey, México",
   description: "I am a proactive person, excellent teammate, organized and responsible. I really enjoy learning new things, so my goal is a challenging and dynamic position where I can share my experience and add new knowledge.",
   interests: ["Software", "Games", "Music", "Travel", "Cars", "Sports", "Books", "Shopping"],
-  profileImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=400"
+  profileImage: "/assets/IMG_A950475DCE5E-1_1754062826302.jpeg"
 };
 
 export default function About() {
