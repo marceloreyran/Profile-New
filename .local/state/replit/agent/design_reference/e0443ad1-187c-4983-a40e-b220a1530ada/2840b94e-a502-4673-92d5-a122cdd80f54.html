@@ -1,0 +1,1252 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcelo Rey - Frontend Developer | Portfolio</title>
+    <meta name="description" content="Marcelo Rey - Frontend Developer specializing in modern web development. View my portfolio, skills, and experience.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.6s ease-out',
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'slide-in-left': 'slideInLeft 0.6s ease-out',
+                        'skill-bar': 'skillBar 2s ease-out',
+                    }
+                }
+            }
+        };
+    </script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes skillBar {
+            from { width: 0%; }
+            to { width: var(--skill-width); }
+        }
+        
+        .skill-bar-animate {
+            animation: skillBar 2s ease-out forwards;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #3B82F6, #06B6D4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(135deg, #3B82F6, #06B6D4);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body class="font-inter bg-slate-50 text-slate-800">
+    
+    <!-- Navigation -->
+    <!-- @COMPONENT: Navigation [responsive navigation with mobile menu] -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <h1 class="text-2xl font-bold gradient-text">Marcelo Rey</h1>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="nav-link text-slate-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Home</a>
+                        <a href="#about" class="nav-link text-slate-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">About</a>
+                        <a href="#skills" class="nav-link text-slate-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Skills</a>
+                        <a href="#experience" class="nav-link text-slate-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Experience</a>
+                        <a href="#portfolio" class="nav-link text-slate-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Portfolio</a>
+                        <a href="#contact" class="nav-link text-slate-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button type="button" id="mobile-menu-btn" class="text-slate-700 hover:text-blue-600 focus:outline-none focus:text-blue-600">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="mobile-menu md:hidden fixed top-16 right-0 bottom-0 w-64 bg-white shadow-xl">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="mobile-nav-link block px-3 py-2 text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-md">Home</a>
+                <a href="#about" class="mobile-nav-link block px-3 py-2 text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-md">About</a>
+                <a href="#skills" class="mobile-nav-link block px-3 py-2 text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-md">Skills</a>
+                <a href="#experience" class="mobile-nav-link block px-3 py-2 text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-md">Experience</a>
+                <a href="#portfolio" class="mobile-nav-link block px-3 py-2 text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-md">Portfolio</a>
+                <a href="#contact" class="mobile-nav-link block px-3 py-2 text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-50 rounded-md">Contact</a>
+            </div>
+        </div>
+    </nav>
+    <!-- @END_COMPONENT: Navigation -->
+
+    <!-- Hero Section -->
+    <!-- @COMPONENT: Hero [main landing section with CTA] -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Professional developer workspace with multiple monitors showing code -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&h=1080" 
+                 alt="Professional developer workspace" 
+                 class="w-full h-full object-cover opacity-10" />
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-cyan-900/20"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="animate-fade-in-up">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6">
+                    Hi, I'm <span class="gradient-text">Marcelo</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-slate-600 mb-8 max-w-3xl mx-auto font-light">
+                    Frontend Developer specializing in modern web technologies. 
+                    I create engaging, responsive experiences that bring ideas to life.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#portfolio" class="inline-flex items-center px-8 py-4 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                        <i class="fas fa-eye mr-2"></i>
+                        View My Work
+                    </a>
+                    <a href="#contact" class="inline-flex items-center px-8 py-4 border-2 border-blue-600 text-blue-600 font-semibold rounded-xl hover:bg-blue-600 hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl">
+                        <i class="fas fa-envelope mr-2"></i>
+                        Get In Touch
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Social Links -->
+            <div class="mt-12 flex justify-center space-x-6">
+                <a href="mailto:marcelo.reyran@gmail.com" class="text-slate-600 hover:text-blue-600 transition-colors duration-300">
+                    <i class="fab fa-envelope text-2xl"></i>
+                </a>
+                <a href="#" class="text-slate-600 hover:text-blue-600 transition-colors duration-300" data-implementation="Add LinkedIn profile URL">
+                    <i class="fab fa-linkedin text-2xl"></i>
+                </a>
+                <a href="#" class="text-slate-600 hover:text-blue-600 transition-colors duration-300" data-implementation="Add GitHub profile URL">
+                    <i class="fab fa-github text-2xl"></i>
+                </a>
+                <a href="#" class="text-slate-600 hover:text-blue-600 transition-colors duration-300" data-implementation="Add Twitter profile URL">
+                    <i class="fab fa-twitter text-2xl"></i>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-slate-400 text-xl"></i>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Hero -->
+
+    <!-- About Section -->
+    <!-- @COMPONENT: About [about me section with personal info] -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 gradient-text">About Me</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Profile Image -->
+                <div class="text-center lg:text-left">
+                    <!-- Professional headshot of a young Hispanic male software developer -->
+                    <div class="inline-block p-1 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl mb-8">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=400" 
+                             alt="Marcelo Rey - Frontend Developer" 
+                             class="w-80 h-80 object-cover rounded-2xl" />
+                    </div>
+                </div>
+                
+                <!-- About Content -->
+                <div class="space-y-6">
+                    <div class="prose prose-lg max-w-none">
+                        <p class="text-lg text-slate-600 leading-relaxed mb-6">
+                            I am a proactive person, excellent teammate, organized and responsible. 
+                            I really enjoy learning new things, so my goal is a challenging and dynamic 
+                            position where I can share my experience and add new knowledge.
+                        </p>
+                    </div>
+                    
+                    <!-- Personal Info Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-slate-50 p-4 rounded-lg">
+                            <div class="flex items-center">
+                                <i class="fas fa-phone text-blue-600 mr-3"></i>
+                                <div>
+                                    <span class="text-sm text-slate-500">Phone</span>
+                                    <p class="font-semibold" data-bind="personal.phone">81-26-55-00-31</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-slate-50 p-4 rounded-lg">
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope text-blue-600 mr-3"></i>
+                                <div>
+                                    <span class="text-sm text-slate-500">Email</span>
+                                    <p class="font-semibold" data-bind="personal.email">marcelo.reyran@gmail.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-slate-50 p-4 rounded-lg">
+                            <div class="flex items-center">
+                                <i class="fas fa-map-marker-alt text-blue-600 mr-3"></i>
+                                <div>
+                                    <span class="text-sm text-slate-500">Location</span>
+                                    <p class="font-semibold" data-bind="personal.location">Monterrey, México</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-slate-50 p-4 rounded-lg">
+                            <div class="flex items-center">
+                                <i class="fas fa-briefcase text-blue-600 mr-3"></i>
+                                <div>
+                                    <span class="text-sm text-slate-500">Position</span>
+                                    <p class="font-semibold" data-bind="personal.position">Frontend Developer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Interests -->
+                    <div class="mt-8">
+                        <h3 class="text-xl font-semibold mb-4">Interests</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <!-- @MAP: interests.map(interest => ( -->
+                            <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium" data-mock="true">Software</span>
+                            <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium" data-mock="true">Games</span>
+                            <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium" data-mock="true">Music</span>
+                            <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium" data-mock="true">Travel</span>
+                            <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium" data-mock="true">Cars</span>
+                            <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium" data-mock="true">Sports</span>
+                            <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium" data-mock="true">Books</span>
+                            <span class="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium" data-mock="true">Shopping</span>
+                            <!-- @END_MAP )) -->
+                        </div>
+                    </div>
+                    
+                    <!-- Download CV Button -->
+                    <div class="mt-8">
+                        <a href="#" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105" data-implementation="Link to downloadable CV file">
+                            <i class="fas fa-download mr-2"></i>
+                            Download CV
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: About -->
+
+    <!-- Skills Section -->
+    <!-- @COMPONENT: Skills [interactive skills with progress bars] -->
+    <section id="skills" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 gradient-text">Skills</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full"></div>
+                <p class="text-xl text-slate-600 mt-6 max-w-2xl mx-auto">
+                    Technical expertise and professional skills that drive exceptional results
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Technical Skills -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-8 text-center">
+                        <i class="fas fa-code text-blue-600 mr-2"></i>
+                        Technical Skills
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <!-- @MAP: technicalSkills.map(skill => ( -->
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-semibold text-slate-700" data-bind="skill.name">HTML</span>
+                                <span class="text-sm text-slate-500" data-bind="skill.percentage">70%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-blue-500 to-cyan-500 h-3 rounded-full skill-bar" style="--skill-width: 70%" data-bind="skill.percentage"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-semibold text-slate-700" data-bind="skill.name">CSS</span>
+                                <span class="text-sm text-slate-500" data-bind="skill.percentage">60%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-blue-500 to-cyan-500 h-3 rounded-full skill-bar" style="--skill-width: 60%" data-bind="skill.percentage"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-semibold text-slate-700" data-bind="skill.name">JavaScript</span>
+                                <span class="text-sm text-slate-500" data-bind="skill.percentage">40%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-blue-500 to-cyan-500 h-3 rounded-full skill-bar" style="--skill-width: 40%" data-bind="skill.percentage"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-semibold text-slate-700" data-bind="skill.name">Git</span>
+                                <span class="text-sm text-slate-500" data-bind="skill.percentage">65%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-blue-500 to-cyan-500 h-3 rounded-full skill-bar" style="--skill-width: 65%" data-bind="skill.percentage"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-semibold text-slate-700" data-bind="skill.name">GitHub</span>
+                                <span class="text-sm text-slate-500" data-bind="skill.percentage">65%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-blue-500 to-cyan-500 h-3 rounded-full skill-bar" style="--skill-width: 65%" data-bind="skill.percentage"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-semibold text-slate-700" data-bind="skill.name">React</span>
+                                <span class="text-sm text-slate-500" data-bind="skill.percentage">20%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-blue-500 to-cyan-500 h-3 rounded-full skill-bar" style="--skill-width: 20%" data-bind="skill.percentage"></div>
+                            </div>
+                        </div>
+                        <!-- @END_MAP )) -->
+                    </div>
+                </div>
+                
+                <!-- Professional Skills -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-8 text-center">
+                        <i class="fas fa-users text-blue-600 mr-2"></i>
+                        Professional Skills
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <!-- @MAP: professionalSkills.map(skill => ( -->
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-semibold text-slate-700" data-bind="skill.name">Communication</span>
+                                <span class="text-sm text-slate-500" data-bind="skill.percentage">75%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-emerald-500 to-teal-500 h-3 rounded-full skill-bar" style="--skill-width: 75%" data-bind="skill.percentage"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-semibold text-slate-700" data-bind="skill.name">Creativity</span>
+                                <span class="text-sm text-slate-500" data-bind="skill.percentage">80%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-emerald-500 to-teal-500 h-3 rounded-full skill-bar" style="--skill-width: 80%" data-bind="skill.percentage"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-semibold text-slate-700" data-bind="skill.name">Teamwork</span>
+                                <span class="text-sm text-slate-500" data-bind="skill.percentage">90%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-emerald-500 to-teal-500 h-3 rounded-full skill-bar" style="--skill-width: 90%" data-bind="skill.percentage"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-semibold text-slate-700" data-bind="skill.name">Autodidact</span>
+                                <span class="text-sm text-slate-500" data-bind="skill.percentage">100%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-emerald-500 to-teal-500 h-3 rounded-full skill-bar" style="--skill-width: 100%" data-bind="skill.percentage"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-semibold text-slate-700" data-bind="skill.name">Leadership</span>
+                                <span class="text-sm text-slate-500" data-bind="skill.percentage">90%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-emerald-500 to-teal-500 h-3 rounded-full skill-bar" style="--skill-width: 90%" data-bind="skill.percentage"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-semibold text-slate-700" data-bind="skill.name">Adaptability</span>
+                                <span class="text-sm text-slate-500" data-bind="skill.percentage">90%</span>
+                            </div>
+                            <div class="w-full bg-slate-200 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-emerald-500 to-teal-500 h-3 rounded-full skill-bar" style="--skill-width: 90%" data-bind="skill.percentage"></div>
+                            </div>
+                        </div>
+                        <!-- @END_MAP )) -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Skills -->
+
+    <!-- Experience & Education Section -->
+    <!-- @COMPONENT: Experience [timeline layout for education and work] -->
+    <section id="experience" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 gradient-text">Experience & Education</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full"></div>
+                <p class="text-xl text-slate-600 mt-6 max-w-2xl mx-auto">
+                    My professional journey and academic achievements
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Education Timeline -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-8 text-center">
+                        <i class="fas fa-graduation-cap text-blue-600 mr-2"></i>
+                        Education
+                    </h3>
+                    
+                    <div class="relative">
+                        <!-- Timeline Line -->
+                        <div class="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 to-cyan-500"></div>
+                        
+                        <!-- Education Items -->
+                        <!-- @MAP: education.map(item => ( -->
+                        <div class="relative pl-12 pb-8">
+                            <div class="absolute left-2 w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow"></div>
+                            <div class="bg-slate-50 p-6 rounded-lg">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h4 class="text-lg font-semibold text-slate-800" data-bind="education.degree">Master's Degree in Software Engineering and Computer Systems</h4>
+                                    <span class="text-sm text-blue-600 font-medium bg-blue-100 px-3 py-1 rounded-full" data-bind="education.period">2023-2025</span>
+                                </div>
+                                <p class="text-blue-600 font-medium mb-3" data-bind="education.institution">Universidad Internacional de La Rioja en México</p>
+                                <p class="text-slate-600 text-sm" data-bind="education.description">
+                                    Logical reasoning skills, problem solving, decision making, observation, analysis and synthesis skills and interest in research and innovation, as well as knowledge of and interest in exact sciences of software and computer science.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="relative pl-12 pb-8">
+                            <div class="absolute left-2 w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow"></div>
+                            <div class="bg-slate-50 p-6 rounded-lg">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h4 class="text-lg font-semibold text-slate-800" data-bind="education.degree">Software Technology Engineer</h4>
+                                    <span class="text-sm text-blue-600 font-medium bg-blue-100 px-3 py-1 rounded-full" data-bind="education.period">2018-2021</span>
+                                </div>
+                                <p class="text-blue-600 font-medium mb-3" data-bind="education.institution">Universidad del Valle de México</p>
+                                <p class="text-slate-600 text-sm" data-bind="education.description">
+                                    Apply autonomous learning strategies at different levels and fields of knowledge that allow you to make timely and relevant decisions in the personal, academic and professional spheres. Use logical, formal, mathematical, iconic, verbal and non-verbal languages according to their stage of life, to understand, interpret and express ideas, feelings, theories and currents of thought with an ecumenical approach.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- @END_MAP )) -->
+                    </div>
+                </div>
+                
+                <!-- Work Experience Timeline -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-8 text-center">
+                        <i class="fas fa-briefcase text-blue-600 mr-2"></i>
+                        Work Experience
+                    </h3>
+                    
+                    <div class="relative">
+                        <!-- Timeline Line -->
+                        <div class="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-500 to-teal-500"></div>
+                        
+                        <!-- Experience Items -->
+                        <!-- @MAP: workExperience.map(item => ( -->
+                        <div class="relative pl-12 pb-8">
+                            <div class="absolute left-2 w-4 h-4 bg-emerald-600 rounded-full border-4 border-white shadow"></div>
+                            <div class="bg-slate-50 p-6 rounded-lg">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h4 class="text-lg font-semibold text-slate-800" data-bind="experience.position">IT Administrator</h4>
+                                    <span class="text-sm text-emerald-600 font-medium bg-emerald-100 px-3 py-1 rounded-full" data-bind="experience.period">2017-2023</span>
+                                </div>
+                                <p class="text-emerald-600 font-medium mb-3" data-bind="experience.company">TRESANDE</p>
+                                <p class="text-slate-600 text-sm" data-bind="experience.description">
+                                    Activities carried out in position, Administrative area, Hardware and Software Support, Hardware and Software monitoring, Equipment connectivity, Databases
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="relative pl-12 pb-8">
+                            <div class="absolute left-2 w-4 h-4 bg-emerald-600 rounded-full border-4 border-white shadow"></div>
+                            <div class="bg-slate-50 p-6 rounded-lg">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h4 class="text-lg font-semibold text-slate-800" data-bind="experience.position">Administrative</h4>
+                                    <span class="text-sm text-emerald-600 font-medium bg-emerald-100 px-3 py-1 rounded-full" data-bind="experience.period">2014-2017</span>
+                                </div>
+                                <p class="text-emerald-600 font-medium mb-3" data-bind="experience.company">GNSYS</p>
+                                <p class="text-slate-600 text-sm" data-bind="experience.description">
+                                    Activities carried out in the position, client portfolio management, review and updating of contracts, payment of fees and services, processing of contracts with government agencies.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- @END_MAP )) -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Experience -->
+
+    <!-- Portfolio Section -->
+    <!-- @COMPONENT: Portfolio [project showcase with filtering] -->
+    <section id="portfolio" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 gradient-text">Portfolio</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full"></div>
+                <p class="text-xl text-slate-600 mt-6 max-w-2xl mx-auto">
+                    Showcasing my latest projects and creative solutions
+                </p>
+            </div>
+            
+            <!-- Project Filter Buttons -->
+            <!-- @STATE: activeFilter:string = 'all' -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="px-6 py-3 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-colors duration-300 filter-btn active" data-filter="all">
+                    All Projects
+                </button>
+                <button class="px-6 py-3 bg-white text-slate-600 rounded-full font-medium hover:bg-slate-100 transition-colors duration-300 filter-btn" data-filter="web" data-implementation="Add filtering functionality">
+                    Web Development
+                </button>
+                <button class="px-6 py-3 bg-white text-slate-600 rounded-full font-medium hover:bg-slate-100 transition-colors duration-300 filter-btn" data-filter="mobile" data-implementation="Add filtering functionality">
+                    Mobile Apps
+                </button>
+                <button class="px-6 py-3 bg-white text-slate-600 rounded-full font-medium hover:bg-slate-100 transition-colors duration-300 filter-btn" data-filter="ui" data-implementation="Add filtering functionality">
+                    UI/UX Design
+                </button>
+            </div>
+            
+            <!-- Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid">
+                <!-- @MAP: projects.map(project => ( -->
+                <!-- Modern e-commerce website interface with clean design -->
+                <div class="portfolio-item bg-white rounded-2xl shadow-lg overflow-hidden card-hover" data-category="web">
+                    <div class="relative group">
+                        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                             alt="E-commerce Website Project" 
+                             class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <div class="flex space-x-4">
+                                    <a href="#" class="p-2 bg-white/20 rounded-full hover:bg-white/30 transition-colors duration-300" data-implementation="Add live demo link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                    <a href="#" class="p-2 bg-white/20 rounded-full hover:bg-white/30 transition-colors duration-300" data-implementation="Add GitHub repository link">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2" data-bind="project.title">E-commerce Platform</h3>
+                        <p class="text-slate-600 mb-4" data-bind="project.description">Modern e-commerce solution with React, featuring responsive design, shopping cart functionality, and payment integration.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full" data-mock="true">React</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full" data-mock="true">Node.js</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full" data-mock="true">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mobile app interface showing modern design -->
+                <div class="portfolio-item bg-white rounded-2xl shadow-lg overflow-hidden card-hover" data-category="mobile">
+                    <div class="relative group">
+                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                             alt="Mobile App Development Project" 
+                             class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <div class="flex space-x-4">
+                                    <a href="#" class="p-2 bg-white/20 rounded-full hover:bg-white/30 transition-colors duration-300" data-implementation="Add app store link">
+                                        <i class="fas fa-mobile-alt"></i>
+                                    </a>
+                                    <a href="#" class="p-2 bg-white/20 rounded-full hover:bg-white/30 transition-colors duration-300" data-implementation="Add GitHub repository link">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2" data-bind="project.title">Task Management App</h3>
+                        <p class="text-slate-600 mb-4" data-bind="project.description">Cross-platform mobile application for task management with real-time synchronization and offline capabilities.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-emerald-100 text-emerald-700 text-sm rounded-full" data-mock="true">React Native</span>
+                            <span class="px-3 py-1 bg-emerald-100 text-emerald-700 text-sm rounded-full" data-mock="true">Firebase</span>
+                            <span class="px-3 py-1 bg-emerald-100 text-emerald-700 text-sm rounded-full" data-mock="true">Redux</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- UI/UX design mockups and wireframes -->
+                <div class="portfolio-item bg-white rounded-2xl shadow-lg overflow-hidden card-hover" data-category="ui">
+                    <div class="relative group">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                             alt="UI/UX Design Project" 
+                             class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <div class="flex space-x-4">
+                                    <a href="#" class="p-2 bg-white/20 rounded-full hover:bg-white/30 transition-colors duration-300" data-implementation="Add Figma/Dribbble link">
+                                        <i class="fas fa-paint-brush"></i>
+                                    </a>
+                                    <a href="#" class="p-2 bg-white/20 rounded-full hover:bg-white/30 transition-colors duration-300" data-implementation="Add case study link">
+                                        <i class="fas fa-file-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2" data-bind="project.title">Banking App UI Design</h3>
+                        <p class="text-slate-600 mb-4" data-bind="project.description">Complete UI/UX design for a modern banking application, focusing on user experience and accessibility.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full" data-mock="true">Figma</span>
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full" data-mock="true">Adobe XD</span>
+                            <span class="px-3 py-1 bg-purple-100 text-purple-700 text-sm rounded-full" data-mock="true">Prototyping</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dashboard interface with charts and analytics -->
+                <div class="portfolio-item bg-white rounded-2xl shadow-lg overflow-hidden card-hover" data-category="web">
+                    <div class="relative group">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                             alt="Analytics Dashboard Project" 
+                             class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <div class="flex space-x-4">
+                                    <a href="#" class="p-2 bg-white/20 rounded-full hover:bg-white/30 transition-colors duration-300" data-implementation="Add live demo link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                    <a href="#" class="p-2 bg-white/20 rounded-full hover:bg-white/30 transition-colors duration-300" data-implementation="Add GitHub repository link">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2" data-bind="project.title">Analytics Dashboard</h3>
+                        <p class="text-slate-600 mb-4" data-bind="project.description">Interactive dashboard for data visualization with real-time charts, filters, and export functionality.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full" data-mock="true">Vue.js</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full" data-mock="true">D3.js</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full" data-mock="true">Express</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Modern web application interface -->
+                <div class="portfolio-item bg-white rounded-2xl shadow-lg overflow-hidden card-hover" data-category="web">
+                    <div class="relative group">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                             alt="Business Website Project" 
+                             class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <div class="flex space-x-4">
+                                    <a href="#" class="p-2 bg-white/20 rounded-full hover:bg-white/30 transition-colors duration-300" data-implementation="Add live demo link">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                    <a href="#" class="p-2 bg-white/20 rounded-full hover:bg-white/30 transition-colors duration-300" data-implementation="Add GitHub repository link">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2" data-bind="project.title">Corporate Website</h3>
+                        <p class="text-slate-600 mb-4" data-bind="project.description">Professional corporate website with CMS integration, SEO optimization, and performance monitoring.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full" data-mock="true">Next.js</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full" data-mock="true">Strapi</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full" data-mock="true">Tailwind</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mobile app design prototype -->
+                <div class="portfolio-item bg-white rounded-2xl shadow-lg overflow-hidden card-hover" data-category="mobile">
+                    <div class="relative group">
+                        <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                             alt="Social Media App Project" 
+                             class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                            <div class="p-6 text-white">
+                                <div class="flex space-x-4">
+                                    <a href="#" class="p-2 bg-white/20 rounded-full hover:bg-white/30 transition-colors duration-300" data-implementation="Add app store link">
+                                        <i class="fas fa-mobile-alt"></i>
+                                    </a>
+                                    <a href="#" class="p-2 bg-white/20 rounded-full hover:bg-white/30 transition-colors duration-300" data-implementation="Add GitHub repository link">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2" data-bind="project.title">Social Media App</h3>
+                        <p class="text-slate-600 mb-4" data-bind="project.description">Feature-rich social media application with real-time messaging, media sharing, and social interactions.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-emerald-100 text-emerald-700 text-sm rounded-full" data-mock="true">Flutter</span>
+                            <span class="px-3 py-1 bg-emerald-100 text-emerald-700 text-sm rounded-full" data-mock="true">Dart</span>
+                            <span class="px-3 py-1 bg-emerald-100 text-emerald-700 text-sm rounded-full" data-mock="true">Socket.io</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- @END_MAP )) -->
+            </div>
+            
+            <!-- Load More Button -->
+            <div class="text-center mt-12">
+                <button class="px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105" data-implementation="Load more projects functionality">
+                    <i class="fas fa-plus mr-2"></i>
+                    Load More Projects
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Portfolio -->
+
+    <!-- Testimonials Section -->
+    <!-- @COMPONENT: Testimonials [client reviews and recommendations] -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 gradient-text">Testimonials</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full"></div>
+                <p class="text-xl text-slate-600 mt-6 max-w-2xl mx-auto">
+                    What clients and colleagues say about working with me
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- @MAP: testimonials.map(testimonial => ( -->
+                <div class="bg-slate-50 p-8 rounded-2xl shadow-lg card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <blockquote class="text-slate-600 mb-6 italic" data-mock="true">
+                        "Marcelo's attention to detail and problem-solving skills are exceptional. He delivered a complex web application on time and exceeded our expectations."
+                    </blockquote>
+                    <div class="flex items-center">
+                        <!-- Professional business person headshot -->
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&h=100" 
+                             alt="Client testimonial" 
+                             class="w-12 h-12 rounded-full object-cover mr-4" data-mock-image="true" />
+                        <div>
+                            <h4 class="font-semibold" data-mock="true">Carlos Rodriguez</h4>
+                            <p class="text-sm text-slate-500" data-mock="true">CEO, Tech Solutions</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-slate-50 p-8 rounded-2xl shadow-lg card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <blockquote class="text-slate-600 mb-6 italic" data-mock="true">
+                        "Working with Marcelo was a pleasure. His technical expertise and communication skills made our project a success. Highly recommended!"
+                    </blockquote>
+                    <div class="flex items-center">
+                        <!-- Professional business woman headshot -->
+                        <img src="https://pixabay.com/get/g31ff7c2bdb510743cc61fc04c2449f78070b8c5d048a5beef2407ec6c8663ff35b47068ff8fb1382b49e729ac797d70f24f5e9fa53a96232b30dd1a6762bf1e5_1280.jpg" 
+                             alt="Client testimonial" 
+                             class="w-12 h-12 rounded-full object-cover mr-4" data-mock-image="true" />
+                        <div>
+                            <h4 class="font-semibold" data-mock="true">Maria Gonzalez</h4>
+                            <p class="text-sm text-slate-500" data-mock="true">Project Manager, Digital Agency</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-slate-50 p-8 rounded-2xl shadow-lg card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <blockquote class="text-slate-600 mb-6 italic" data-mock="true">
+                        "Marcelo's innovative approach and dedication to quality made our mobile app development smooth and efficient. Outstanding work!"
+                    </blockquote>
+                    <div class="flex items-center">
+                        <!-- Professional business person headshot -->
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&h=100" 
+                             alt="Client testimonial" 
+                             class="w-12 h-12 rounded-full object-cover mr-4" data-mock-image="true" />
+                        <div>
+                            <h4 class="font-semibold" data-mock="true">Luis Martinez</h4>
+                            <p class="text-sm text-slate-500" data-mock="true">Startup Founder</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- @END_MAP )) -->
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Testimonials -->
+
+    <!-- Contact Section -->
+    <!-- @COMPONENT: Contact [contact form and information] -->
+    <section id="contact" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 gradient-text">Get In Touch</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full"></div>
+                <p class="text-xl text-slate-600 mt-6 max-w-2xl mx-auto">
+                    Let's discuss your next project and bring your ideas to life
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Contact Information -->
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-6">Let's Connect</h3>
+                        <p class="text-slate-600 text-lg mb-8">
+                            I'm always interested in new opportunities and exciting projects. 
+                            Whether you have a question or just want to say hello, feel free to reach out!
+                        </p>
+                    </div>
+                    
+                    <!-- Contact Info Cards -->
+                    <div class="space-y-4">
+                        <div class="flex items-center p-4 bg-white rounded-lg shadow-sm">
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-phone text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Phone</h4>
+                                <p class="text-slate-600" data-bind="contact.phone">81-26-55-00-31</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center p-4 bg-white rounded-lg shadow-sm">
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Email</h4>
+                                <p class="text-slate-600" data-bind="contact.email">marcelo.reyran@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center p-4 bg-white rounded-lg shadow-sm">
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Location</h4>
+                                <p class="text-slate-600" data-bind="contact.location">Monterrey, México</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Media Links -->
+                    <div>
+                        <h4 class="font-semibold mb-4">Follow Me</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-12 h-12 bg-white rounded-lg shadow-sm flex items-center justify-center text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-300" data-implementation="Add LinkedIn profile URL">
+                                <i class="fab fa-linkedin text-xl"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-white rounded-lg shadow-sm flex items-center justify-center text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-300" data-implementation="Add GitHub profile URL">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-white rounded-lg shadow-sm flex items-center justify-center text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-300" data-implementation="Add Twitter profile URL">
+                                <i class="fab fa-twitter text-xl"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-white rounded-lg shadow-sm flex items-center justify-center text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-300" data-implementation="Add Dribbble profile URL">
+                                <i class="fab fa-dribbble text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg">
+                    <form id="contact-form" class="space-y-6" data-implementation="Add form submission handling with validation">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-slate-700 mb-2">Name</label>
+                                <input type="text" id="name" name="name" required 
+                                       class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-300" 
+                                       placeholder="Your Name">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-slate-700 mb-2">Email</label>
+                                <input type="email" id="email" name="email" required 
+                                       class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-300" 
+                                       placeholder="your@email.com">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-slate-700 mb-2">Subject</label>
+                            <input type="text" id="subject" name="subject" required 
+                                   class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-300" 
+                                   placeholder="Project Inquiry">
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-slate-700 mb-2">Message</label>
+                            <textarea id="message" name="message" rows="5" required 
+                                      class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-300 resize-none" 
+                                      placeholder="Tell me about your project..."></textarea>
+                        </div>
+                        
+                        <button type="submit" 
+                                class="w-full py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                                data-event="click:handleSubmit" data-implementation="Should validate form before submission">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Contact -->
+
+    <!-- Footer -->
+    <!-- @COMPONENT: Footer [footer with copyright and links] -->
+    <footer class="bg-slate-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Brand -->
+                <div>
+                    <h3 class="text-2xl font-bold gradient-text mb-4">Marcelo Rey</h3>
+                    <p class="text-slate-300 mb-4">
+                        Frontend Developer passionate about creating exceptional digital experiences 
+                        through modern web technologies and innovative solutions.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="mailto:marcelo.reyran@gmail.com" class="text-slate-300 hover:text-white transition-colors duration-300">
+                            <i class="fab fa-envelope text-xl"></i>
+                        </a>
+                        <a href="#" class="text-slate-300 hover:text-white transition-colors duration-300" data-implementation="Add LinkedIn profile URL">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-slate-300 hover:text-white transition-colors duration-300" data-implementation="Add GitHub profile URL">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="#" class="text-slate-300 hover:text-white transition-colors duration-300" data-implementation="Add Twitter profile URL">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-slate-300 hover:text-white transition-colors duration-300">Home</a></li>
+                        <li><a href="#about" class="text-slate-300 hover:text-white transition-colors duration-300">About</a></li>
+                        <li><a href="#skills" class="text-slate-300 hover:text-white transition-colors duration-300">Skills</a></li>
+                        <li><a href="#experience" class="text-slate-300 hover:text-white transition-colors duration-300">Experience</a></li>
+                        <li><a href="#portfolio" class="text-slate-300 hover:text-white transition-colors duration-300">Portfolio</a></li>
+                        <li><a href="#contact" class="text-slate-300 hover:text-white transition-colors duration-300">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Services -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 text-slate-300">
+                        <li>Web Development</li>
+                        <li>Frontend Development</li>
+                        <li>UI/UX Design</li>
+                        <li>Mobile App Development</li>
+                        <li>Technical Consulting</li>
+                        <li>Code Review & Optimization</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-700 mt-8 pt-8 text-center">
+                <p class="text-slate-300">
+                    &copy; <span data-bind="currentYear">2024</span> Marcelo Rey. All rights reserved. 
+                    Made with <span class="text-red-500">❤</span> in Monterrey, México
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-110 opacity-0 invisible z-50">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script>
+        // TODO: Implement business logic, API calls, or state management
+        
+        (function() {
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('open');
+            });
+            
+            // Close mobile menu when clicking nav links
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('open');
+                });
+            });
+            
+            // Smooth scrolling for navigation links
+            const navLinks = document.querySelectorAll('a[href^="#"]');
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        const headerHeight = 64; // Navigation header height
+                        const targetPosition = targetElement.offsetTop - headerHeight;
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Active navigation highlighting
+            const sections = document.querySelectorAll('section[id]');
+            const desktopNavLinks = document.querySelectorAll('.nav-link');
+            
+            function updateActiveNav() {
+                const scrollPosition = window.scrollY + 100;
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        desktopNavLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${sectionId}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }
+            
+            // Skill bar animation
+            const skillBars = document.querySelectorAll('.skill-bar');
+            const animateSkillBars = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('skill-bar-animate');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            };
+            
+            const skillObserver = new IntersectionObserver(animateSkillBars, {
+                threshold: 0.5
+            });
+            
+            skillBars.forEach(bar => {
+                skillObserver.observe(bar);
+            });
+            
+            // Portfolio filter functionality
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const filter = btn.getAttribute('data-filter');
+                    
+                    // Update active button
+                    filterBtns.forEach(b => {
+                        b.classList.remove('bg-blue-600', 'text-white');
+                        b.classList.add('bg-white', 'text-slate-600');
+                    });
+                    btn.classList.remove('bg-white', 'text-slate-600');
+                    btn.classList.add('bg-blue-600', 'text-white');
+                    
+                    // Filter portfolio items
+                    portfolioItems.forEach(item => {
+                        const itemCategory = item.getAttribute('data-category');
+                        if (filter === 'all' || itemCategory === filter) {
+                            item.style.display = 'block';
+                            item.style.animation = 'fadeIn 0.5s ease-in';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Back to top button
+            const backToTopBtn = document.getElementById('back-to-top');
+            
+            function toggleBackToTop() {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.remove('opacity-0', 'invisible');
+                    backToTopBtn.classList.add('opacity-100', 'visible');
+                } else {
+                    backToTopBtn.classList.add('opacity-0', 'invisible');
+                    backToTopBtn.classList.remove('opacity-100', 'visible');
+                }
+            }
+            
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Contact form handling
+            const contactForm = document.getElementById('contact-form');
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                // TODO: Implement form validation and submission
+                alert('Form submission functionality to be implemented');
+            });
+            
+            // Scroll event listeners
+            window.addEventListener('scroll', () => {
+                updateActiveNav();
+                toggleBackToTop();
+            });
+            
+            // Initialize
+            updateActiveNav();
+            toggleBackToTop();
+        })();
+    </script>
+</body>
+</html>
